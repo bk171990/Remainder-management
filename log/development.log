@@ -20913,3 +20913,58 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 
+
+
+Started GET "/" for 127.0.0.1 at 2016-03-19 18:24:13 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (21.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PagesController#index as HTML
+  Rendered pages/index.html.erb within layouts/application (6.3ms)
+  Rendered layouts/_navbar.html.erb (15.8ms)
+Completed 200 OK in 2619ms (Views: 2588.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-03-19 18:24:21 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (245.7ms)
+  Rendered layouts/_navbar.html.erb (1.0ms)
+Completed 200 OK in 1079ms (Views: 944.0ms | ActiveRecord: 89.7ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-03-19 18:24:25 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mkU5ckew4sglsKygIT2HzgTq9+RNvJLOfJMklxPTAkbHUnAhcZkIEY1RqSygaiaaWJAMZj6uCkBOJjJTbWWl1w==", "user"=>{"email"=>"dhanshree.j.kamble@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (43.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "dhanshree.j.kamble@gmail.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4  [["current_sign_in_at", "2016-03-19 12:54:26.069200"], ["sign_in_count", 2], ["updated_at", "2016-03-19 12:54:26.071841"], ["id", 1]]
+  [1m[36m (11.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 497ms (ActiveRecord: 56.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-03-19 18:24:26 +0530
+Processing by PagesController#index as HTML
+  Rendered pages/index.html.erb within layouts/application (0.2ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered layouts/_navbar.html.erb (4.5ms)
+Completed 200 OK in 716ms (Views: 713.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/groups" for 127.0.0.1 at 2016-03-19 18:24:29 +0530
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mGroup Load (68.9ms)[0m  SELECT "groups".* FROM "groups"
+  Rendered groups/index.html.erb within layouts/application (118.4ms)
+  Rendered layouts/_navbar.html.erb (0.7ms)
+Completed 200 OK in 901ms (Views: 788.9ms | ActiveRecord: 73.7ms)
+
+
+Started GET "/groups/1/remainders/new" for 127.0.0.1 at 2016-03-19 18:24:33 +0530
+Processing by RemaindersController#new as HTML
+  Parameters: {"group_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mGroup Load (0.9ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered remainders/_form.html.erb (36.7ms)
+  Rendered remainders/new.html.erb within layouts/application (51.8ms)
+  Rendered layouts/_navbar.html.erb (0.8ms)
+Completed 200 OK in 1085ms (Views: 898.9ms | ActiveRecord: 5.6ms)
